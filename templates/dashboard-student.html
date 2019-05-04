@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="../static/css/dashboard-student.css">
+        <title> Student Dashboard </title>
+    </head>
+
+    <body id="welcome">
+        <aside class="left-navbar">
+            <div id="login_button">
+                <button type="button" class="logout_button" onclick="window.location.href='{{url_for('logout')}}';"> Logout </button>
+            </div>
+        </aside>
+
+        <div id="main-wrapper">
+            <div class="main-content">
+                <section id="welcome">
+                    <div class="welcome_back_div">
+                        <h1><b> Welcome back, {{ name }}! </b></h1>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="personal_info">
+                        <button class="collapsible_personal_info"><b>View Your Personal Information</b></button>
+                        <div class="content">
+                            <h1> Name: {{ personal_info[0][0] }}</h1>
+                            <h1> <b> Age: {{ personal_info[0][1] }} </b> </h1>
+                            <h1> <b> Gender: {{ personal_info[0][2] }} </b> </h1>
+                            <h1> <b> Major: {{ personal_info[0][3] }} </b> </h1>
+                            <h1> <b> Address: {{ personal_info[0][4] }} {{ personal_info[0][5] }}</b> </h1>
+                            <img src="../static/img/profile-default.png" class="profile_pic">
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="courses_message_div">
+                        <table class="courses_table" style="width:100%">
+                            <div class="headings-table">
+                                <tr>
+                                    <th>Course</th>
+                                    <th>Section Number</th>
+                                    <th> Course Name</th>
+                                </tr>
+                            </div>
+
+                            <div class="table-content">
+                                {% for course in range(0, courses1 | length, 2) %}
+                                <tr>
+                                    <td> <h1> <b> {{ courses1[course] }}</b> </h1> </td>
+                                    <td> <h1> <b> {{ courses1[course+1] }} </b> </h1> </td>
+                                    <td> <h1> <b> {{ course_information[(course/2) | int ][0][0]}}</b> </h1> </td>
+                                </tr>
+                                    {% endfor %}
+                            </div>
+
+                        </table>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="professor_information">
+                        <button class="collapsible_professor_info"><b>View Your Professor(s) Information</b></button>
+
+                        <div class="course_content_professors">
+
+
+                            {% for courses in range(1, grades[0] | length, 3) %}
+                                <button class="collapsible_professor"> <b>{{ grades[0][courses] }}</b> </button>
+
+                                <div class="professor_content">
+
+                                    <h1> Name of Professor: {{ professor_information[ (courses/3 + 2/3 - 1) | int  ][0][0] }} </h1>
+                                    <h1> Professor's Email: {{ professor_information[ (courses/3 + 2/3 - 1) | int  ][0][1] }}</h1>
+                                    <h1> Professor's Office Location: {{ professor_information[ (courses/3 + 2/3 - 1) | int  ][0][2] }}</h1>
+
+                                </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <div class="grades_info">
+                        <button class="collapsible_grades_info"><b>View Your Grade(s)</b></button>
+                        <div class="course_content">
+                            {% for courses in range(1, all_grades[0] | length, 5) %}
+                                <button class="collapsible_courses"> <b>{{ all_grades[0][courses] }}</b> </button>
+                                <div class="course_content1">
+                                    <table>
+                                        <div>
+                                            <tr>
+                                                <th>Exam Number</th>
+                                                <th>Exam Score</th>
+                                                <th> Homework Number</th>
+                                                <th> Homework Score</th>
+                                            </tr>
+                                        </div>
+
+                                        <div>
+                                            <tr>
+                                                <td> <h1> <b> {{ all_grades[0][courses+1] }}</b> </h1> </td>
+                                                <td> <h1> <b> {{ all_grades[0][courses+2] }} </b> </h1> </td>
+                                                <td> <h1> <b> {{ all_grades[0][courses+3] }} </b> </h1> </td>
+                                                <td> <h1> <b> {{ all_grades[0][courses+4] }} </b> </h1> </td>
+                                            </tr>
+
+                                        </div>
+
+                                    </table>
+
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                </section>
+
+            </div>
+        </div>
+
+    <script src="../static/javascript/dashboard-student.js"></script>
+    </body>
+</html>

@@ -1,0 +1,75 @@
+body {
+	margin: 0px;
+}
+.left-navbar {
+	background-color: #222222;
+    float: left;
+    min-height: 100%;
+    position: fixed;
+    width: 15%;
+}
+.logout_button {
+	background: rgba(133, 133, 133, 0.66);
+	color: white;
+	font-family: 'Ubuntu', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana';
+    font-size: 15px;
+	width: 150px;
+	height: 50px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+
+	top: 500px;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	margin: auto;
+
+}
+
+.logout_button:hover {
+    background-color: rgba(216, 216, 216, 0.96);
+	color: #6975ff;
+	transition: 0.7s;
+}
+
+#main-wrapper {
+	float: left;
+    margin-left: 18%;
+    width: 75%;
+}
+
+.main-content section {
+	margin: 0;
+}
+
+.welcome_back_div {
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    margin-top: 10px;
+    padding: 10px 0 15px;
+    text-align: center;
+}
+
+table, td {
+	border-spacing: 5px;
+	border: 1px solid black;
+	text-align: center;
+    color: #5ca8ff;
+    font-family: 'Consolas', 'Monaco', 'Bitstream Vera Sans Mono', monospace;
+    opacity: 40%;
+    transition: 0.3s;
+}
+
+th {
+    color: Black;
+    background-color: gray;
+}
+
+td:hover {
+    background-color: gray;
+    color: #c6f8ff;
+}
+
+

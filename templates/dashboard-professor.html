@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="../static/css/dashboard-professor.css">
+        <title> Faculty Member Dashboard </title>
+    </head>
+
+<body id="welcome">
+    <aside class="left-navbar">
+        <div id="login_button">
+            <button type="button" class="logout_button" onclick="window.location.href='{{url_for('logout')}}';"> Logout </button>
+        </div>
+    </aside>
+
+    <div id="main-wrapper">
+        <div class="main-content">
+            <section id="welcome">
+                <div class="welcome_back_div">
+                    <h1><b> Welcome back, {{ name }}! </b></h1>
+                </div>
+            </section>
+
+            <section>
+                <h1> You are teaching: </h1>
+                {% for courses in range(course_teaching | length) %}
+                    <li> {{ course_teaching[courses][0] }} </li>
+                {% endfor %}
+            </section>
+
+            <section>
+
+	            <div class="table">
+
+                {% for courses in range(course_teaching | length) %}
+                    <table>
+                        <thead>
+                            <tr>
+                                <h1> Homework and Exams for Students in: {{ course_teaching[courses][0] }} </h1>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <th> Student No. </th>
+                                <th> Student's Email </th>
+                                <th> Student's Name </th>
+
+                                {% for hws in range(hw_assignments | length) %}
+                                    <th> HW No. {{ hw_assignments[hws][0] }} </th>
+                                    <th> HW No. {{ hw_assignments[hws][0] }} Grades</th>
+                                {% endfor %}
+
+                                {% for exams in range(course_exams  | length) %}
+                                    <th> Exam No. {{ course_exams[exams][0] }} </th>
+                                    <th> Exam No. {{ course_exams[exams][0] }} Grades</th>
+                                {% endfor %}
+                            </tr>
+
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>Bob@gmail.com</td>
+                                <td>Bob</td>
+                                <td>1</td>
+                                <td>92%</td>
+                                <td>1</td>
+                                <td>94%</td>
+
+                            </tr>
+
+                        </tbody>
+                    </table>
+                {% endfor %}
+
+                </div>
+            </section>
+
+            <section>
+                <h2>Print Name</h2>
+                    <form action="{{url_for('professor_dashboard')}}" method="POST">
+                    <label for="FirstName">First Name</label>
+                        <input type="text" name="FirstName" required>
+
+                    <label for="LastName">Last Name</label>
+                    <input type="text" name="LastName" required>
+
+                      <button type="submit">Insert</button>
+                    </form>
+
+                    <h2>History</h2>
+                    <table border = 1>
+                      <tr>
+                         <td> First Name </td>
+                         <th> Last Name </th>
+                      </tr>
+                         {% for first_name, last_name in result %}
+                            <tr>
+                               <td> {{ first_name }} </td>
+                               <th> {{ last_name }} </th>
+                            </tr>
+                         {% endfor %}
+                      </table>
+
+
+            </section>
+
+
+        </div>
+
+    </div>
+
+    </body>
+</html>

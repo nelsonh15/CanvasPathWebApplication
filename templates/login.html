@@ -1,0 +1,43 @@
+<!doctype html>
+
+<html>
+    <head>
+        <title> CanvasPath Login </title>
+        <link rel="stylesheet" type="text/css" href="../static/css/login.css">
+    </head>
+
+    <body>
+
+    <button type="button" class="Back_button" onclick="window.location.href='{{url_for('home')}}';"> Back </button>
+
+
+        <div class="box">
+            <b class="SignIn">Please Sign In</b>
+
+            <form action="" method="post">
+                <input id="email_field" class = "emailbox" type="text" placeholder="Email/ID" name="username" value="{{ request.form.username }}">
+                <input id ="password_field" class = "password" type="password" placeholder="Password" name="password" value="{{ request.form.password }}">
+                <input class="login" type="submit" value="Login" style="display: block; margin: 0 auto;">
+            </form>
+        </div>
+
+        {% if error %}
+            <p class="error"> <strong>Error:</strong> {{ error }}
+        {% endif %}
+
+
+
+            {% for message in get_flashed_messages() %}
+                {{ message }}
+            {% endfor %}
+
+
+    <script type="text/javascript">
+        window.setTimeout("closeHelpDiv();", 3000);
+        function closeHelpDiv(){
+        document.getElementById("message").style.display=" none";
+        }
+    </script>
+
+    </body>
+</html>

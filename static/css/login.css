@@ -1,0 +1,177 @@
+body {
+  background-image: url("/static/img/intersection.png")
+}
+
+.div {
+
+}
+
+.box {
+	background: rgb(255, 255, 255);
+	width: 350px;
+	height: 300px;
+	border-radius: 10px;
+	border-style: solid;
+	border-width: 1px;
+	padding: 28px;
+	box-shadow: 6px 6px #888888;
+	position: absolute;
+	margin: auto;
+
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+
+    text-align: center;
+}
+
+.emailbox {
+	background: rgba(133, 133, 133, 0.66);
+    color: white;
+
+    font-family: museo-sans, Arial, sans-serif;
+	width: 246px;
+	height: 20px;
+	padding: 12px;
+	border-radius: 5px;
+	border-style: solid;
+	border-width: 1px;
+
+	position: absolute;
+	margin: auto;
+
+	top: 0;
+	left: 0;
+	bottom: 100px;
+	right: 0;
+
+	color: rgba(39, 39, 39, 0.78);
+	font-size: 14px;
+
+}
+
+.password {
+	background: rgba(133, 133, 133, 0.66);
+    color: white;
+    font-family: museo-sans, Arial, sans-serif;
+	width: 246px;
+	height: 20px;
+	padding: 12px;
+	border-radius: 5px;
+	border-style: solid;
+	border-width: 1px;
+
+	position: absolute;
+	margin: auto;
+	top: 10px;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	color: rgba(39, 39, 39, 0.78);
+	font-size: 14px;
+
+}
+
+.login{
+	background: rgba(133, 133, 133, 0.66);
+	color: white;
+	font-family: 'Ubuntu', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana';
+    font-size: 15px;
+	width: 95px;
+	height: 40px;
+	border: none;
+
+	top: 250px;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	margin: auto;
+
+    text-align: center;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.Back_button {
+	background: rgba(133, 133, 133, 0.66);
+	color: white;
+	font-family: 'Ubuntu', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana';
+    font-size: 15px;
+	width: 95px;
+	height: 40px;
+	border: none;
+
+    text-align: center;
+	border-radius: 4px;
+	cursor: pointer;
+}
+.SignIn {
+	color: #000000;
+	font-size: 26px;
+	font-family: museo sans, arial, sans-serif;
+
+	top: 200px;
+}
+
+.login_message {
+	padding: 20px;
+    background-color: #f4080c; /* Red */
+    color: white;
+    margin-bottom: 15px;
+}
+.closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* When moving the mouse over the close button */
+.closebtn:hover {
+    color: black;
+}
+
+::placeholder {
+    color: white;
+    font-family: 'Ubuntu', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana';
+    font-size: 14px;
+}
+
+.box:hover {
+	color: #242dff;
+
+}
+
+.emailbox:hover {
+	background-color: rgba(216, 216, 216, 0.96);
+
+}
+
+.password:hover {
+	background-color: rgba(212, 212, 212, 0.96);
+
+}
+
+.login:hover {
+	background-color: rgba(216, 216, 216, 0.96);
+	color: #6975ff;
+	transition: 0.7s;
+}
+
+.Back_button:hover {
+	background-color: rgba(216, 216, 216, 0.96);
+	color: #6975ff;
+	transition: 0.7s;
+}
+
+a {
+	color: #757575;
+	font-family: "museo-sans", "Museo Sans", "Helvetica Neue", "Arial", sans-serif;
+	font-size: 14px;
+}

@@ -1,0 +1,202 @@
+body {
+	margin: 0px;
+}
+.left-navbar {
+	background-color: #222222;
+    float: left;
+    min-height: 100%;
+    position: fixed;
+    width: 15%;
+}
+.logout_button {
+	background: rgba(133, 133, 133, 0.66);
+	color: white;
+	font-family: 'Ubuntu', 'Lucida Grande', 'Lucida Sans Unicode', 'Geneva', 'Verdana';
+    font-size: 15px;
+	width: 150px;
+	height: 50px;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+
+	top: 500px;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	position: absolute;
+	margin: auto;
+
+}
+
+.logout_button:hover {
+    background-color: rgba(216, 216, 216, 0.96);
+	color: #6975ff;
+	transition: 0.7s;
+}
+
+#main-wrapper {
+	float: left;
+    margin-left: 18%;
+    width: 75%;
+}
+
+.main-content section {
+	margin: 0;
+}
+
+.welcome_back_div {
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    margin-top: 10px;
+    padding: 5px 0 5px;
+    text-align: center;
+}
+
+.courses_message_div {
+	padding: 15px 0 15px;
+}
+
+.collapsible_personal_info {
+    background-color: #aaaaaa;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 17px;
+}
+
+.collapsible_personal_info:hover {
+    background-color: #ccc;
+    transition: 0.5s;
+    opacity: 40%;
+}
+
+.content {
+	padding: 0 18px;
+	display: none;
+	overflow: hidden;
+	background-color: #f1f1f1;
+    position: relative;
+}
+
+.profile_pic {
+    margin: 0 0 0 650px;
+    position: absolute;
+    top:40px;
+    left:0;
+
+}
+
+table, td {
+	border-spacing: 5px;
+	border: 1px solid black;
+	text-align: center;
+    color: #5ca8ff;
+    font-family: 'Consolas', 'Monaco', 'Bitstream Vera Sans Mono', monospace;
+    opacity: 40%;
+    transition: 0.3s;
+}
+
+th {
+    color: Black;
+    background-color: gray;
+}
+
+td:hover {
+    background-color: gray;
+    color: #c6f8ff;
+}
+
+.collapsible_professor_info {
+    background-color: #ababab;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 17px;
+}
+
+.collapsible_professor_info:hover {
+    background-color: #ccc;
+    opacity: 40%;
+    transition: 0.5s;
+}
+
+.collapsible_professor {
+    background-color: #9fb4ff;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 13px;
+}
+
+.collapsible_professor:hover {
+    background-color: #ccc;
+    opacity: 40%;
+    transition: 0.5s;
+}
+
+.grades_info {
+    margin: 25px 0 50px 0;
+}
+.collapsible_grades_info {
+    background-color: #ababab;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 17px;
+}
+
+.collapsible_grades_info:hover {
+    background-color: #ccc;
+    opacity: 40%;
+    transition: 0.5s;
+}
+
+.content_grades {
+    padding: 0 228px;
+	display: none;
+	overflow: hidden;
+	background-color: #f1f1f1;
+}
+
+.collapsible_courses {
+    background-color: #9fb4ff;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 13px;
+
+}
+
+.collapsible_courses:hover {
+    background-color: #ccc;
+    opacity: 40%;
+    transition: 0.5s;
+}
+
+.course_content1 {
+    margin-left: 260px;
+
+}
+
+
+

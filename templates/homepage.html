@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>CanvasPath Homepage</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Playfair+Display:900|Roboto:400,400i,500,700" rel="stylesheet" />
+
+  <link rel="stylesheet" type = "text/css" href="../static/css/homepage2.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/themify-icons/0.1.2/css/themify-icons.css" />
+  <link rel="stylesheet" type= "text/css" href="../static/css/homepage.css" />
+</head>
+
+<body>
+  <!-- ================ Start Header Area ================= -->
+
+  <header class="default-header">
+      <nav class="navbar navbar-expand-lg  navbar-light">
+          <div class="container">
+                <a class="navbar-brand" href="homepage.html"> </a>
+              <div id="login_button">
+                  <button type="button" class="login_button_1" onclick="window.location.href='{{url_for('login')}}';">Login</button>
+              </div>
+          </div>
+        </nav>
+  </header>
+
+  <section class="home-banner-area">
+    <div class="container">
+      <div class="row justify-content-center fullscreen align-items-center">
+        <div class="col-lg-5 col-md-8 home-banner-left">
+          <h1 class="text-white">
+			<br> Welcome to CanvasPath! <br />
+          </h1>
+          <p class="mx-auto text-white  mt-20 mb-40">
+            CanvasPath is a course management and enrollment
+			system that provides students and faculty members
+			a new and interactive way to keep track of their
+			academic tasks to better drive instruction and
+			learning.
+          </p>
+        </div>
+
+		<div class="offset-lg-2 col-lg-5 col-md-12 home-banner-right">
+          <img class="img-fluid" src="../static/img/header-img.png" alt="" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="other-feature-area">
+    <div class="container">
+      <div class="feature-inner row">
+        <div class="col-lg-12">
+          <div class="section-title text-left">
+            <h2>
+              What can you do <br />
+              with CanvasPath?
+            </h2>
+            <p>
+                CanvasPath has many functionalities that would
+                serve your academic needs. See below for a detailed
+                description of each functionalities.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="other-feature-item">
+            <i class="ti-key"></i>
+            <h4>User Access</h4>
+            <div>
+              <p>
+                  All users have the ability to access one out of the three possible
+                  user access - Admin, Faculty and Student. All three users have
+                  various functionalities and different content that are viewable
+                  only to that specific user.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mt--160">
+          <div class="other-feature-item">
+            <i class="ti-files"></i>
+            <h4>Assignment Creation</h4>
+            <div>
+              <p>
+                  Faculty members, within the Faculty user access, can create assignments inside
+                  the section he is teaching. The assignments include homework and exams. The
+                  assignments will viewable by the students after the faculty members create them.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mt--260">
+          <div class="other-feature-item">
+            <i class="ti-medall-alt"></i>
+            <h4>Submitting Scores</h4>
+            <div>
+              <p>
+                  Faculty member can enter the scores of an assignment for all students
+                  after grading. A grades page for each assignment would include a list
+                  of the student’s IDs and grades. The scores will be viewable by the
+                  students after grading.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="other-feature-item">
+            <i class="ti-briefcase"></i>
+            <h4>Course Information</h4>
+            <div>
+              <p>
+                  Students, within the student access system, can  get information of
+                  the courses he is taking, which includes the course description,
+                  professor contact information (email and office) and course grades
+                  courses.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mt--160">
+          <div class="other-feature-item">
+            <i class="ti-crown"></i>
+            <h4>Organizing Teams</h4>
+            <div>
+              <p>
+                  Users within the faculty member access can create a list
+                  of teams only for Capstone project. The user collects the
+                  information of all teams (such as team members) and he/she
+                  can maintain the team list and the members of each team.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mt--260">
+          <div class="other-feature-item">
+            <i class="ti-headphone-alt"></i>
+            <h4>Admin Support</h4>
+            <div>
+              <p>
+                  Users within the admin access can manage the courses (add/remove),
+                  assign professors to courses, and enroll students to courses and
+                  sections.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="../static/javascript/homepage1.js"></script>
+  <script src="../static/javascript/homepage.js"></script>
+
+</body>
+</html>
