@@ -21,6 +21,8 @@
                     </div>
                 </section>
 
+                <br>
+
                 <section>
                     <div class="personal_info">
                         <button class="collapsible_personal_info"><b>View Your Personal Information</b></button>
@@ -38,45 +40,66 @@
                 <section>
                     <div class="courses_message_div">
                         <table class="courses_table" style="width:100%">
-                            <div class="headings-table">
-                                <tr>
-                                    <th>Course</th>
-                                    <th>Section Number</th>
-                                    <th> Course Name</th>
-                                </tr>
-                            </div>
+                            <tr>
+                                <th>Course</th>
+                                <th>Section Number</th>
+                                <th> Course Name</th>
+                            </tr>
 
-                            <div class="table-content">
-                                {% for course in range(0, courses1 | length, 2) %}
-                                <tr>
-                                    <td> <h1> <b> {{ courses1[course] }}</b> </h1> </td>
-                                    <td> <h1> <b> {{ courses1[course+1] }} </b> </h1> </td>
-                                    <td> <h1> <b> {{ course_information[(course/2) | int ][0][0]}}</b> </h1> </td>
-                                </tr>
-                                    {% endfor %}
-                            </div>
+                            {% for course in range(0, courses1 | length, 2) %}
+                                {% if courses1[course] in capstone_courses %}
 
+                                      <tr class="capstone">
+
+                                          <td> <h1> <b>
+                                              <a class="capstone_tooltip"> {{ courses1[course] }}
+                                                   <span> Capstone Course </span>
+                                              </a>
+                                          </b> </h1></td>
+
+                                          <td> <h1> <b>
+                                              <a class="capstone_tooltip"> {{ courses1[course+1] }}
+                                                  <span> Capstone Course </span>
+                                              </a>
+                                          </b> </h1> </td>
+
+                                          <td> <h1> <b>
+                                              <a class="capstone_tooltip"> {{ course_information[(course/2) | int ][0][0]}}
+                                                  <span> Capstone Course </span>
+                                              </a>
+                                          </b> </h1> </td>
+
+                                      </tr>
+                                {% else %}
+                                    <tr>
+                                        <td> <h1> <b> {{ courses1[course] }}</b> </h1> </td>
+                                        <td> <h1> <b> {{ courses1[course+1] }} </b> </h1> </td>
+                                        <td> <h1> <b> {{ course_information[(course/2) | int ][0][0]}}</b> </h1> </td>
+                                    </tr>
+                                {% endif %}
+                                {% endfor %}
                         </table>
                     </div>
                 </section>
 
                 <section>
                     <div class="professor_information">
-                        <button class="collapsible_professor_info"><b>View Your Professor(s) Information</b></button>
+
+                        <button class="collapsible_professor_info">
+                            <b> View Your Professor(s) Information </b>
+                        </button>
 
                         <div class="course_content_professors">
-
 
                             {% for courses in range(1, grades[0] | length, 3) %}
                                 <button class="collapsible_professor"> <b>{{ grades[0][courses] }}</b> </button>
 
                                 <div class="professor_content">
-
                                     <h1> Name of Professor: {{ professor_information[ (courses/3 + 2/3 - 1) | int  ][0][0] }} </h1>
                                     <h1> Professor's Email: {{ professor_information[ (courses/3 + 2/3 - 1) | int  ][0][1] }}</h1>
                                     <h1> Professor's Office Location: {{ professor_information[ (courses/3 + 2/3 - 1) | int  ][0][2] }}</h1>
-
                                 </div>
+
                             {% endfor %}
 
                         </div>
@@ -91,27 +114,20 @@
                                 <button class="collapsible_courses"> <b>{{ all_grades[0][courses] }}</b> </button>
                                 <div class="course_content1">
                                     <table>
-                                        <div>
-                                            <tr>
-                                                <th>Exam Number</th>
-                                                <th>Exam Score</th>
-                                                <th> Homework Number</th>
-                                                <th> Homework Score</th>
-                                            </tr>
-                                        </div>
+                                        <tr>
+                                            <th>Exam Number</th>
+                                            <th>Exam Score</th>
+                                            <th> Homework Number</th>
+                                            <th> Homework Score</th>
+                                        </tr>
 
-                                        <div>
-                                            <tr>
-                                                <td> <h1> <b> {{ all_grades[0][courses+1] }}</b> </h1> </td>
-                                                <td> <h1> <b> {{ all_grades[0][courses+2] }} </b> </h1> </td>
-                                                <td> <h1> <b> {{ all_grades[0][courses+3] }} </b> </h1> </td>
-                                                <td> <h1> <b> {{ all_grades[0][courses+4] }} </b> </h1> </td>
-                                            </tr>
-
-                                        </div>
-
+                                        <tr>
+                                            <td> <h1> <b> {{ all_grades[0][courses+1] }}</b> </h1> </td>
+                                            <td> <h1> <b> {{ all_grades[0][courses+2] }} </b> </h1> </td>
+                                            <td> <h1> <b> {{ all_grades[0][courses+3] }} </b> </h1> </td>
+                                            <td> <h1> <b> {{ all_grades[0][courses+4] }} </b> </h1> </td>
+                                        </tr>
                                     </table>
-
                                 </div>
                             {% endfor %}
                         </div>

@@ -1,3 +1,7 @@
+html {
+  overflow-y: scroll;
+}
+
 body {
 	margin: 0px;
 }
@@ -45,31 +49,92 @@ body {
 }
 
 .welcome_back_div {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid #dddddd;
     border-top: 1px solid #ddd;
     margin-top: 10px;
-    padding: 10px 0 15px;
+    padding: 5px 0 5px;
     text-align: center;
 }
 
-table, td {
-	border-spacing: 5px;
-	border: 1px solid black;
-	text-align: center;
-    color: #5ca8ff;
-    font-family: 'Consolas', 'Monaco', 'Bitstream Vera Sans Mono', monospace;
+.collapsible_course_list {
+    background-color: #aaaaaa;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: center;
+    outline: none;
+    font-size: 17px;
+}
+
+.collapsible_course_list:hover {
+    background-color: #cccccc;
+    transition: 0.5s;
     opacity: 40%;
-    transition: 0.3s;
+}
+
+.content {
+    padding: 0 18px;
+	overflow: hidden;
+    display: none;
+	background-color: #f5f5f5;
+    position: relative;
+
+}
+
+.collapsible_course_list:after {
+  content: '\002B';
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.course_inputs {
+    background-color: #d2cccb;
+    padding: 4px 4px 4px 4px;
+}
+
+.AddCourseButton {
+    right: 30px;
+}
+
+table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+td {
+    border-spacing: 1px;
+    border: 1px solid #ddd;
+	text-align: center;
+    padding: 5px;
 }
 
 th {
-    color: Black;
-    background-color: gray;
+    color: #ffffff;
+    background-color: #2573c0;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
 }
 
-td:hover {
-    background-color: gray;
-    color: #c6f8ff;
+tr {
+    color: #5ca8ff;
 }
+
+tr:nth-child(even) {
+    background-color: #d9d9d9;
+}
+
+tr:hover {
+    background-color: gray;
+    color: white;
+}
+
 
 

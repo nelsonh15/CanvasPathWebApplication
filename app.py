@@ -27,15 +27,17 @@ def admin_dashboard():
     connection = sql.connect('database.db')
     course_list = Administration("course_list")
 
-
     error = None
+
     if request.method == 'POST':
-        course_list = CreatingCourses(request.form['CourseID'], request.form['CourseName'], request.form['CourseDescription'])
-        #delete_list = DeletingCourses(request.form['DeleteCourseID'])
-        if course_list:
-            return render_template('dashboard-admin.html', error=error, url=host, course_list=course_list)
-        #elif delete_list:
-        #   return render_template('dashboard-admin.html', error=error, url=host, course_list=course_list, delete_list=delete_list)
+
+        if "AddCourse" in request.form:  # if user clicks on button with name="AddCourse"
+            course_list = CreatingCourses(request.form['CourseID'], request.form['CourseName'],
+                                          request.form['CourseDescription'])
+            return render_template('dashboard-admin.html', url=host, error=error, course_list=course_list)
+        elif "DeleteCourse" in request.form:  # if user clicks on button with name="DeleteCourse"
+            course_list = DeletingCourses(request.form['DeleteCourseID'])
+            return render_template('dashboard-admin.html', url=host, error=error, course_list=course_list)
         else:
             error = 'Invalid input name'
 
@@ -75,6 +77,7 @@ def student_dashboard():
 
     name = getName("for_students")[0][0]
     courses = CheckingInfo("courses") #courses = [('aly8942@lionstate.edu', 'EE320', 1, 'EE212', 1, 'CMPEN454', 2)]
+    capstone_courses = CheckingInfo("capstone")[0] #capstone_courses = ("CMPEN454", "CMPSC497", "EE340", "IST558", "STAT414")
     courses1 = []
     for i in range(1, len(courses[0])):
         courses1.append(courses[0][i]) #courses1 = ['EE320', 1, 'EE212', 1, 'CMPEN454', 2]
@@ -95,7 +98,8 @@ def student_dashboard():
 
     return render_template('dashboard-student.html', url=host, name=name, courses1=courses1,
                            course_information=course_information, professor_information=professor_information,
-                           personal_info=personal_info, grades=grades, all_grades=all_grades)
+                           personal_info=personal_info, grades=grades, all_grades=all_grades,
+                           capstone_courses=capstone_courses)
 
 
 @app.route('/') #home page
@@ -168,6 +172,9 @@ def CheckingInfo(item):
     if item == "courses":
         info = connection.execute('SELECT * FROM Enrolls WHERE Email = ?', [session['email']])
 
+    elif item == "capstone":
+        info = connection.execute('SELECT COURSES FROM Capstone_courses')
+
     elif item == "personal_information":
         info = connection.execute('SELECT Name, Age, Gender, Major, Street, ZipCode FROM Students WHERE Email = ?',
                                   [session['email']])
@@ -195,6 +202,7 @@ def CreatingAssignments(first_name, last_name):
     cursor = connection.execute('SELECT * FROM users;')
 
     return cursor.fetchall()
+
 
 def CreatingCourses(course_id, course_name, course_description):
     connection = sql.connect('database.db')
@@ -226,6 +234,7 @@ def GenerateCourseExams(course_teaching):
     list_of_exams = connection.execute('SELECT exam_no FROM Exams WHERE course_id= ?', [course_teaching])
     return list_of_exams.fetchall()
 
+
 def Administration(item):
     connection = sql.connect('database.db')
 
@@ -233,6 +242,7 @@ def Administration(item):
         info = connection.execute('SELECT * FROM Courses')
 
     return info.fetchall()
+
 
 if __name__ == '__main__':
     app.run(debug=True)

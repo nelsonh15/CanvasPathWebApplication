@@ -6,12 +6,12 @@
         <title> Admin Dashboard </title>
     </head>
 
-<body id="welcome">
-    <aside class="left-navbar">
-        <div id="login_button">
-            <button type="button" class="logout_button" onclick="window.location.href='{{url_for('logout')}}';"> Logout </button>
-        </div>
-    </aside>
+    <body id="welcome">
+        <aside class="left-navbar">
+            <div id="login_button">
+                <button type="button" class="logout_button" onclick="window.location.href='{{url_for('logout')}}';"> Logout </button>
+            </div>
+        </aside>
 
         <div id="main-wrapper">
             <div class="main-content">
@@ -19,64 +19,63 @@
                     <div class="welcome_back_div">
                         <h1><b> Welcome back, Admin User! </b></h1>
                     </div>
-
                 </section>
+
+                <br>
 
                 <section id="course_list">
+                    <div>
+                        <button class="collapsible_course_list"><b>List of Course(s)</b></button>
+                        <div class="content">
+                            <br>
+                            <div class="course_inputs">
+                                <form action="{{ url_for('admin_dashboard') }}" method="POST">
+                                    <label for="CourseID">Course ID</label>
+                                        <input type="text" name="CourseID" required>
+                                    <label for="CourseName">Course Name</label>
+                                        <input type="text" name="CourseName" required>
+                                    <label for="CourseDescription"> Course Description</label>
+                                        <input type="text" name="CourseDescription" required>
+                                        <button class="AddCourseButton" type="submit" name="AddCourse">Add Course</button>
+                                </form>
+                            </div>
 
-                    <form action="{{url_for('admin_dashboard')}}" method="POST">
+                            <br>
 
-                    <label for="CourseID">Course ID</label>
-                        <input type="text" name="CourseID" required>
-                    <label for="CourseName">Course Name</label>
-                        <input type="text" name="CourseName" required>
-                    <label for="CourseDescription"> Course Description</label>
-                        <input type="text" name="CourseDescription" required>
+                            <div class="course_inputs">
+                                <form action="{{ url_for('admin_dashboard') }}" method="POST">
+                                    <label for="DeleteCourseID">Course ID</label>
+                                        <input type="text" name="DeleteCourseID" required>
 
-                        <button type="submit">Add Course</button>
-                    </form>
-<!--
-                    <form action="" method="POST">
+                                        <button type="submit" name="DeleteCourse">Delete Course</button>
+                                </form>
+                            </div>
 
-                    <label for="DeleteCourseID">Course ID</label>
-                        <input type="text" name="DeleteCourseID" required>
-
-                        <button type="submit">Delete Course</button>
-                    </form>
--->
-                    <div class="course_table_div">
-                        <table class="course_table" style="width:100%">
-                            <thead>
-                                <tr>
-                                    <h1> List of Courses</h1>
-                                </tr>
-                            </thead>
-
-                            <tbody>
-                                <tr>
-                                    <th> Course ID </th>
-                                    <th> Course Name </th>
-                                    <th> Course Description </th>
-                                </tr>
-
-                                {% for courses in course_list %}
+                            <div class="course_table_div">
+                                <table class="course_table" style="width:100%">
                                     <tr>
-                                        <td><h1><b> {{ courses[0] }} </b></h1></td>
-                                        <td><h1><b> {{ courses[1] }} </b></h1></td>
-                                        <td><h1><b> {{ courses[2] }} </b></h1></td>
+                                        <th> Course ID </th>
+                                        <th> Course Name </th>
+                                        <th> Course Description </th>
                                     </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
 
+                                    <br>
+
+                                    {% for courses in course_list %}
+                                        <tr>
+                                            <td><b> {{ courses[0] }} </b></td>
+                                            <td><b> {{ courses[1] }} </b></td>
+                                            <td><b> {{ courses[2] }} </b></td>
+                                        </tr>
+                                    {% endfor %}
+                                </table>
+                            </div>
+                        </div>
                     </div>
                 </section>
-
-
-
-
             </div>
         </div>
 
-</body>
+    <script src="../static/javascript/dashboard-admin.js"></script>
+    </body>
 </html>

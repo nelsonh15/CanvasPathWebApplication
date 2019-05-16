@@ -82,6 +82,18 @@ body {
     position: relative;
 }
 
+.collapsible_personal_info:after {
+  content: '\002B';
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
 .profile_pic {
     margin: 0 0 0 650px;
     position: absolute;
@@ -90,14 +102,10 @@ body {
 
 }
 
-table, td {
+table {
 	border-spacing: 5px;
 	border: 1px solid black;
-	text-align: center;
-    color: #5ca8ff;
     font-family: 'Consolas', 'Monaco', 'Bitstream Vera Sans Mono', monospace;
-    opacity: 40%;
-    transition: 0.3s;
 }
 
 th {
@@ -105,9 +113,41 @@ th {
     background-color: gray;
 }
 
-td:hover {
+tr {
+    color: #5ca8ff;
+}
+
+
+.capstone:hover {
     background-color: gray;
-    color: #c6f8ff;
+}
+
+.capstone_tooltip span {
+    display: none;
+    color: rgba(244, 8, 12, 0.51);
+    text-decoration: underline;
+    padding: 3px;
+}
+
+.capstone_tooltip:hover span {
+    display: block;
+    position: absolute;
+    background-color: #FFF;
+    border: 1px solid #CCC;
+    margin: 2px 10px;
+    font-size: 12pt;
+    border-radius: 5px;
+}
+
+tr:hover {
+    background-color: gray;
+    color: white;
+}
+
+td {
+    border-spacing: 5px;
+	border: 1px solid black;
+	text-align: center;
 }
 
 .collapsible_professor_info {
@@ -128,6 +168,19 @@ td:hover {
     transition: 0.5s;
 }
 
+.collapsible_professor_info:after {
+  content: '\002B';
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+
 .collapsible_professor {
     background-color: #9fb4ff;
     color: #444;
@@ -144,6 +197,18 @@ td:hover {
     background-color: #ccc;
     opacity: 40%;
     transition: 0.5s;
+}
+
+.collapsible_professor:after {
+  content: '\002B';
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
 }
 
 .grades_info {
@@ -167,6 +232,18 @@ td:hover {
     transition: 0.5s;
 }
 
+.collapsible_grades_info:after {
+  content: '\002B';
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
 .content_grades {
     padding: 0 228px;
 	display: none;
@@ -184,13 +261,24 @@ td:hover {
     text-align: left;
     outline: none;
     font-size: 13px;
-
 }
 
 .collapsible_courses:hover {
     background-color: #ccc;
     opacity: 40%;
     transition: 0.5s;
+}
+
+.collapsible_courses:after {
+  content: '\002B';
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
 }
 
 .course_content1 {
