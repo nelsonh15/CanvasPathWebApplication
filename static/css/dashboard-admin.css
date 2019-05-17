@@ -88,7 +88,7 @@ body {
   color: white;
   font-weight: bold;
   float: right;
-  margin-left: 5px;
+
 }
 
 .active:after {
@@ -118,9 +118,23 @@ td {
 th {
     color: #ffffff;
     background-color: #2573c0;
-    padding-top: 12px;
-    padding-bottom: 12px;
+    padding: 10px;
     text-align: center;
+    font-size: 16pt;
+    font-weight: lighter;
+}
+
+th:after {
+    content:"\2195";
+    color: #ffffff;
+    font-weight: bold;
+    float: right;
+    font-size: 16pt;
+}
+
+th:hover {
+    color: #fffafb;
+    background-color: #7ebae9;
 }
 
 tr {

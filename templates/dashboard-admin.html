@@ -54,15 +54,15 @@
                             <div class="course_table_div">
                                 <table class="course_table" style="width:100%">
                                     <tr>
-                                        <th> Course ID </th>
-                                        <th> Course Name </th>
-                                        <th> Course Description </th>
+                                        <th onclick="w3.sortHTML('.course_table', '.item', 'td:nth-child(1)')" style="cursor:pointer"> Course ID </th>
+                                        <th onclick="w3.sortHTML('.course_table', '.item', 'td:nth-child(2)')" style="cursor:pointer"> Course Name </th>
+                                        <th onclick="w3.sortHTML('.course_table', '.item', 'td:nth-child(3)')" style="cursor:pointer"> Course Description </th>
                                     </tr>
 
                                     <br>
 
                                     {% for courses in course_list %}
-                                        <tr>
+                                        <tr class="item">
                                             <td><b> {{ courses[0] }} </b></td>
                                             <td><b> {{ courses[1] }} </b></td>
                                             <td><b> {{ courses[2] }} </b></td>
@@ -77,5 +77,6 @@
         </div>
 
     <script src="../static/javascript/dashboard-admin.js"></script>
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
     </body>
 </html>

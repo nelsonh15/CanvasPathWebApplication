@@ -75,6 +75,9 @@ def professor_dashboard():
 def student_dashboard():
     connection = sql.connect('database.db')
 
+    test = connection.execute('SELECT * FROM Test')
+    print(test.fetchall(), file=sys.stderr)
+
     name = getName("for_students")[0][0]
     courses = CheckingInfo("courses") #courses = [('aly8942@lionstate.edu', 'EE320', 1, 'EE212', 1, 'CMPEN454', 2)]
     capstone_courses = CheckingInfo("capstone")[0] #capstone_courses = ("CMPEN454", "CMPSC497", "EE340", "IST558", "STAT414")
