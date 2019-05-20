@@ -46,25 +46,25 @@
                                 <th> Course Name</th>
                             </tr>
 
-                            {% for course in range(0, courses1 | length, 2) %}
-                                {% if courses1[course] in capstone_courses %}
+                            {% for course in range(courses | length) %}
+                                {% if courses[course][0] in capstone_courses %}
 
                                       <tr class="capstone">
 
                                           <td> <h1> <b>
-                                              <a class="capstone_tooltip"> {{ courses1[course] }}
+                                              <a class="capstone_tooltip"> {{ courses[course][0] }}
                                                    <span> Capstone Course </span>
                                               </a>
                                           </b> </h1></td>
 
                                           <td> <h1> <b>
-                                              <a class="capstone_tooltip"> {{ courses1[course+1] }}
+                                              <a class="capstone_tooltip"> {{ courses[course][1] }}
                                                   <span> Capstone Course </span>
                                               </a>
                                           </b> </h1> </td>
 
                                           <td> <h1> <b>
-                                              <a class="capstone_tooltip"> {{ course_information[(course/2) | int ][0][0]}}
+                                              <a class="capstone_tooltip"> {{ courses[course][2] }}
                                                   <span> Capstone Course </span>
                                               </a>
                                           </b> </h1> </td>
@@ -72,9 +72,9 @@
                                       </tr>
                                 {% else %}
                                     <tr>
-                                        <td> <h1> <b> {{ courses1[course] }}</b> </h1> </td>
-                                        <td> <h1> <b> {{ courses1[course+1] }} </b> </h1> </td>
-                                        <td> <h1> <b> {{ course_information[(course/2) | int ][0][0]}}</b> </h1> </td>
+                                        <td> <h1> <b> {{ courses[course][0] }}</b> </h1> </td>
+                                        <td> <h1> <b> {{ courses[course][1] }} </b> </h1> </td>
+                                        <td> <h1> <b> {{ courses[course][2] }}</b> </h1> </td>
                                     </tr>
                                 {% endif %}
                                 {% endfor %}

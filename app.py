@@ -74,35 +74,44 @@ def professor_dashboard():
 @login_required
 def student_dashboard():
     connection = sql.connect('database.db')
+    # variables = connection.execute('SELECT * FROM Enrolls')
+    # variables1 = variables.fetchall()
+    # print(variables1, file=sys.stderr)
+    # print(len(variables1))
 
-    test = connection.execute('SELECT * FROM Test')
-    print(test.fetchall(), file=sys.stderr)
+    # for i in range(len(variables1)):
+
+        # connection.execute('INSERT INTO Enrolls (Email, course_id_1, section_no_1) VALUES (?,?,?)',
+        #                   (variables1[i][0], variables1[i][3], variables1[i][4]))
+        # connection.commit()
+        #connection.execute('INSERT INTO Enrolls (Email, course_id_1, section_no_1) VALUES (?,?,?)',
+        #                   (variables1[i][0], variables1[i][5], variables1[i][6]))
+        #connection.commit()
+
+        # connection.execute('DELETE FROM Courses WHERE Course_id = ?', [course_id])
+        # connection.commit()
 
     name = getName("for_students")[0][0]
-    courses = CheckingInfo("courses") #courses = [('aly8942@lionstate.edu', 'EE320', 1, 'EE212', 1, 'CMPEN454', 2)]
+    courses = CheckingInfo("courses") # courses = [('EE320', 1), ('EE212', 1), ('CMPEN454', 2)]
     capstone_courses = CheckingInfo("capstone")[0] #capstone_courses = ("CMPEN454", "CMPSC497", "EE340", "IST558", "STAT414")
-    courses1 = []
-    for i in range(1, len(courses[0])):
-        courses1.append(courses[0][i]) #courses1 = ['EE320', 1, 'EE212', 1, 'CMPEN454', 2]
 
-    course_information = []
     professor_information = []
-    for course_id in range(0, len(courses1), 2):
-        course_info = connection.execute('SELECT Course_name FROM Courses WHERE Course_id= ?', [courses1[course_id]])
+    for course_id in range(len(courses)):
 
         professor_info = connection.execute('SELECT Name, Email, Office FROM Professors_teaches WHERE Teaching = ?',
-                                            [courses1[course_id]])
-        course_information.append(course_info.fetchall())
+                                            [courses[course_id][0]])
         professor_information.append(professor_info.fetchall())
+
+    print(courses, file=sys.stderr)
+    print(professor_information, file=sys.stderr)
 
     personal_info = CheckingInfo("personal_information")
     grades = CheckingInfo("grades")
     all_grades = CheckingInfo("all_grades")
 
-    return render_template('dashboard-student.html', url=host, name=name, courses1=courses1,
-                           course_information=course_information, professor_information=professor_information,
-                           personal_info=personal_info, grades=grades, all_grades=all_grades,
-                           capstone_courses=capstone_courses)
+    return render_template('dashboard-student.html', url=host, name=name, courses=courses,
+                           professor_information=professor_information, personal_info=personal_info, grades=grades,
+                           all_grades=all_grades, capstone_courses=capstone_courses)
 
 
 @app.route('/') #home page
@@ -173,7 +182,8 @@ def CheckingInfo(item):
     connection = sql.connect('database.db')
 
     if item == "courses":
-        info = connection.execute('SELECT * FROM Enrolls WHERE Email = ?', [session['email']])
+        info = connection.execute('SELECT Enrolls.Course_id, Enrolls.Section_no, Courses.Course_name '
+                                  'FROM Courses, Enrolls WHERE Enrolls.Course_id = Courses.Course_id and Email = ?', [session['email']])
 
     elif item == "capstone":
         info = connection.execute('SELECT COURSES FROM Capstone_courses')
