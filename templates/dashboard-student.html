@@ -91,13 +91,13 @@
 
                         <div class="course_content_professors">
 
-                            {% for courses in range(1, grades[0] | length, 3) %}
-                                <button class="collapsible_professor"> <b>{{ grades[0][courses] }}</b> </button>
+                            {% for info in range(prof_info | length) %}
+                                <button class="collapsible_professor"> <b>{{ prof_info[info][0][3] }}</b> </button>
 
                                 <div class="professor_content">
-                                    <h1> Name of Professor: {{ professor_information[ (courses/3 + 2/3 - 1) | int  ][0][0] }} </h1>
-                                    <h1> Professor's Email: {{ professor_information[ (courses/3 + 2/3 - 1) | int  ][0][1] }}</h1>
-                                    <h1> Professor's Office Location: {{ professor_information[ (courses/3 + 2/3 - 1) | int  ][0][2] }}</h1>
+                                    <h1> Name of Professor: {{ prof_info[info][0][0] }} </h1>
+                                    <h1> Professor's Email: {{ prof_info[info][0][1] }}</h1>
+                                    <h1> Professor's Office Location: {{ prof_info[info][0][2] }}</h1>
                                 </div>
 
                             {% endfor %}
@@ -110,29 +110,45 @@
                     <div class="grades_info">
                         <button class="collapsible_grades_info"><b>View Your Grade(s)</b></button>
                         <div class="course_content">
-                            {% for courses in range(1, all_grades[0] | length, 5) %}
-                                <button class="collapsible_courses"> <b>{{ all_grades[0][courses] }}</b> </button>
+                            {% for course_name in range(courses | length) %}
+                                <button class="collapsible_courses"> <b>{{ courses[course_name][0] }}</b> </button>
                                 <div class="course_content1">
                                     <table>
-                                        <tr>
-                                            <th>Exam Number</th>
-                                            <th>Exam Score</th>
-                                            <th> Homework Number</th>
-                                            <th> Homework Score</th>
-                                        </tr>
+                                            <tr>
+                                                <th>Exam Number</th>
+                                                <th>Exam Score</th>
+                                            </tr>
 
-                                        <tr>
-                                            <td> <h1> <b> {{ all_grades[0][courses+1] }}</b> </h1> </td>
-                                            <td> <h1> <b> {{ all_grades[0][courses+2] }} </b> </h1> </td>
-                                            <td> <h1> <b> {{ all_grades[0][courses+3] }} </b> </h1> </td>
-                                            <td> <h1> <b> {{ all_grades[0][courses+4] }} </b> </h1> </td>
-                                        </tr>
+                                        {% for exam in range(exam_grades | length) %}
+                                            {% if exam_grades[exam][0] in courses[course_name] %}
+                                                <tr>
+                                                    <td> <h1> <b> {{ exam_grades[exam][1] }}</b> </h1> </td>
+                                                    <td> <h1> <b> {{ exam_grades[exam][2] }} </b> </h1> </td>
+                                                </tr>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </table>
+
+                                    <table>
+                                            <tr>
+                                                <th> Homework Number </th>
+                                                <th> Homework Score </th>
+                                            </tr>
+
+                                        {% for hw in range(hw_grades | length) %}
+                                            {% if hw_grades[hw][0] in courses[course_name] %}
+                                                <tr>
+                                                    <td> <h1> <b> {{ hw_grades[hw][1] }} </b> </h1> </td>
+                                                    <td> <h1> <b> {{ hw_grades[hw][2] }} </b> </h1> </td>
+                                                </tr>
+                                            {% endif %}
+                                        {% endfor %}
                                     </table>
                                 </div>
                             {% endfor %}
+
                         </div>
                     </div>
-
                 </section>
 
             </div>

@@ -74,44 +74,46 @@ def professor_dashboard():
 @login_required
 def student_dashboard():
     connection = sql.connect('database.db')
-    # variables = connection.execute('SELECT * FROM Enrolls')
-    # variables1 = variables.fetchall()
-    # print(variables1, file=sys.stderr)
-    # print(len(variables1))
+    '''
+    variables = connection.execute('SELECT * FROM homework_grades_table')
+    variables1 = variables.fetchall()
+    print(variables1)
+    print(len(variables1))
 
-    # for i in range(len(variables1)):
 
-        # connection.execute('INSERT INTO Enrolls (Email, course_id_1, section_no_1) VALUES (?,?,?)',
-        #                   (variables1[i][0], variables1[i][3], variables1[i][4]))
-        # connection.commit()
-        #connection.execute('INSERT INTO Enrolls (Email, course_id_1, section_no_1) VALUES (?,?,?)',
-        #                   (variables1[i][0], variables1[i][5], variables1[i][6]))
-        #connection.commit()
+    for i in range(len(variables1)):
 
-        # connection.execute('DELETE FROM Courses WHERE Course_id = ?', [course_id])
-        # connection.commit()
+        connection.execute('INSERT INTO Homework_grades1 (student_email, course_id, section_no, hw_no, grades) VALUES (?,?,?,?,?)',
+                           (variables1[i][0], variables1[i][1], variables1[i][2], variables1[i][3], variables1[i][4]))
+        connection.commit()
+        connection.execute('INSERT INTO Homework_grades1 (student_email, course_id, section_no, hw_no, grades) VALUES (?,?,?,?,?)',
+                           (variables1[i][0], variables1[i][5], variables1[i][6], variables1[i][7], variables1[i][8]))
+        connection.commit()
+
+        connection.execute('INSERT INTO Homework_grades1 (student_email, course_id, section_no, hw_no, grades) VALUES (?,?,?,?,?)',
+                           (variables1[i][0], variables1[i][9], variables1[i][10], variables1[i][11], variables1[i][12]))
+        connection.commit()
+    '''
 
     name = getName("for_students")[0][0]
-    courses = CheckingInfo("courses") # courses = [('EE320', 1), ('EE212', 1), ('CMPEN454', 2)]
+    courses = CheckingInfo("courses") # courses = [('EE320', 1, 'Network Security and Cryptography'), ('EE212', 1, 'Introduction to Signal Conditioning'), ('CMPEN454', 2, 'Fundamentals of Computer Vision')]
     capstone_courses = CheckingInfo("capstone")[0] #capstone_courses = ("CMPEN454", "CMPSC497", "EE340", "IST558", "STAT414")
 
-    professor_information = []
+    prof_info = [] # [[('Dr Raimy Perez', 'rpe@lionstate.edu', '152, Building 13', 'EE320')], [('Dr Arlie Adams', 'aad@lionstate.edu', '131, Building 13', 'EE212')], [('Dr Ford Price', 'fpr@lionstate.edu', '189, Building 5', 'CMPEN454')]]
     for course_id in range(len(courses)):
 
-        professor_info = connection.execute('SELECT Name, Email, Office FROM Professors_teaches WHERE Teaching = ?',
+        professor_info = connection.execute('SELECT Name, Email, Office, Teaching FROM Professors_teaches WHERE Teaching = ?',
                                             [courses[course_id][0]])
-        professor_information.append(professor_info.fetchall())
-
-    print(courses, file=sys.stderr)
-    print(professor_information, file=sys.stderr)
+        prof_info.append(professor_info.fetchall())
 
     personal_info = CheckingInfo("personal_information")
-    grades = CheckingInfo("grades")
-    all_grades = CheckingInfo("all_grades")
+    exam_grades = CheckingInfo("exam_grades") # exam_grades = [('EE320', 1, 86), ('EE212', 1, 81), ('CMPEN454', None, None)]
+    hw_grades = CheckingInfo("hw_grades") # hw_grades = [('EE320', 1, 93), ('EE212', 1, 85), ('CMPEN454', 1, 90)]
+    print(hw_grades)
 
     return render_template('dashboard-student.html', url=host, name=name, courses=courses,
-                           professor_information=professor_information, personal_info=personal_info, grades=grades,
-                           all_grades=all_grades, capstone_courses=capstone_courses)
+                           capstone_courses=capstone_courses, prof_info=prof_info, personal_info=personal_info,
+                           exam_grades=exam_grades, hw_grades=hw_grades)
 
 
 @app.route('/') #home page
@@ -192,11 +194,11 @@ def CheckingInfo(item):
         info = connection.execute('SELECT Name, Age, Gender, Major, Street, ZipCode FROM Students WHERE Email = ?',
                                   [session['email']])
 
-    elif item == "grades":
-        info = connection.execute('SELECT * FROM Exam_grades WHERE Email= ?', [session['email']])
+    elif item == "exam_grades":
+        info = connection.execute('SELECT course_id, exam_no, grades FROM Exam_grades WHERE Email= ?', [session['email']])
 
-    elif item == "all_grades":
-        info = connection.execute('SELECT * FROM Students_grades WHERE Email= ?', [session['email']])
+    elif item == "hw_grades":
+        info = connection.execute('SELECT course_id, hw_no, grades FROM Homework_grades WHERE Email= ?', [session['email']])
 
     return info.fetchall()
 
