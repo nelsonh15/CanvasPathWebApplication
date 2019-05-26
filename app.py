@@ -109,7 +109,6 @@ def student_dashboard():
     personal_info = CheckingInfo("personal_information")
     exam_grades = CheckingInfo("exam_grades") # exam_grades = [('EE320', 1, 86), ('EE212', 1, 81), ('CMPEN454', None, None)]
     hw_grades = CheckingInfo("hw_grades") # hw_grades = [('EE320', 1, 93), ('EE212', 1, 85), ('CMPEN454', 1, 90)]
-    print(hw_grades)
 
     return render_template('dashboard-student.html', url=host, name=name, courses=courses,
                            capstone_courses=capstone_courses, prof_info=prof_info, personal_info=personal_info,
@@ -195,7 +194,8 @@ def CheckingInfo(item):
                                   [session['email']])
 
     elif item == "exam_grades":
-        info = connection.execute('SELECT course_id, exam_no, grades FROM Exam_grades WHERE Email= ?', [session['email']])
+        info = connection.execute('SELECT Exam_grades.course_id, Exam_grades.exam_no, Exam_grades.grades, '
+                                  'Exams.exam_details FROM Exam_grades WHERE Email= ?', [session['email']])
 
     elif item == "hw_grades":
         info = connection.execute('SELECT course_id, hw_no, grades FROM Homework_grades WHERE Email= ?', [session['email']])

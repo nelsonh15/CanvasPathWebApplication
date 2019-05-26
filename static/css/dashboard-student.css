@@ -103,20 +103,42 @@ body {
 }
 
 table {
-	border-spacing: 5px;
-	border: 1px solid black;
-    font-family: 'Consolas', 'Monaco', 'Bitstream Vera Sans Mono', monospace;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+}
+
+td {
+    border-spacing: 1px;
+    border: 1px solid #dddddd;
+	text-align: center;
+    font-size: 10pt;
 }
 
 th {
-    color: Black;
-    background-color: gray;
+    color: #ffffff;
+    background-color: #2573c0;
+    padding: 10px;
+    text-align: center;
+    font-size: 16pt;
+    font-weight: lighter;
+}
+
+th:hover {
+    color: #fffafb;
+    background-color: #7ebae9;
 }
 
 tr {
     color: #5ca8ff;
 }
 
+tr:nth-child(even) {
+    background-color: #d9d9d9;
+}
+
+tr:hover {
+    background-color: gray;
+    color: white;
+}
 
 .capstone:hover {
     background-color: gray;
@@ -137,17 +159,6 @@ tr {
     margin: 2px 10px;
     font-size: 12pt;
     border-radius: 5px;
-}
-
-tr:hover {
-    background-color: gray;
-    color: white;
-}
-
-td {
-    border-spacing: 5px;
-	border: 1px solid black;
-	text-align: center;
 }
 
 .collapsible_professor_info {
@@ -187,7 +198,8 @@ td {
     cursor: pointer;
     padding: 18px;
     width: 100%;
-    border: none;
+    border-style: solid;
+    border-width: 1px;
     text-align: left;
     outline: none;
     font-size: 13px;
@@ -201,7 +213,7 @@ td {
 
 .collapsible_professor:after {
   content: '\002B';
-  color: white;
+  color: #ffffff;
   font-weight: bold;
   float: right;
   margin-left: 5px;
@@ -209,6 +221,11 @@ td {
 
 .active:after {
   content: "\2212";
+}
+
+.professor_content {
+    display: none;
+    background-color: #d2d2d2;
 }
 
 .grades_info {
@@ -257,7 +274,8 @@ td {
     cursor: pointer;
     padding: 18px;
     width: 100%;
-    border: none;
+    border-style: solid;
+    border-width: 1px;
     text-align: left;
     outline: none;
     font-size: 13px;
@@ -283,7 +301,7 @@ td {
 
 .course_content1 {
     margin-left: 260px;
-
+    display: none;
 }
 
 
