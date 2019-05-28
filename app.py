@@ -194,8 +194,7 @@ def CheckingInfo(item):
                                   [session['email']])
 
     elif item == "exam_grades":
-        info = connection.execute('SELECT Exam_grades.course_id, Exam_grades.exam_no, Exam_grades.grades, '
-                                  'Exams.exam_details FROM Exam_grades WHERE Email= ?', [session['email']])
+        info = connection.execute('SELECT course_id, exam_no, grades FROM Exam_grades WHERE Email= ?', [session['email']])
 
     elif item == "hw_grades":
         info = connection.execute('SELECT course_id, hw_no, grades FROM Homework_grades WHERE Email= ?', [session['email']])
