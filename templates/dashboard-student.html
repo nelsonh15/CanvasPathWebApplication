@@ -120,7 +120,7 @@
                                             </tr>
 
                                         {% for exam in range(exam_grades | length) %}
-                                            {% if exam_grades[exam][0] in courses[course_name] %}
+                                            {% if exam_grades[exam][0] in courses[course_name] and exam_grades[exam][1] != None %}
                                                 <tr>
                                                     <td> <h1> <b> {{ exam_grades[exam][1] }}</b> </h1> </td>
                                                     <td> <h1> <b> {{ exam_grades[exam][2] }} </b> </h1> </td>
@@ -136,7 +136,7 @@
                                             </tr>
 
                                         {% for hw in range(hw_grades | length) %}
-                                            {% if hw_grades[hw][0] in courses[course_name] %}
+                                            {% if hw_grades[hw][0] in courses[course_name] and hw_grades[hw][1] != None %}
                                                 <tr>
                                                     <td> <h1> <b> {{ hw_grades[hw][1] }} </b> </h1> </td>
                                                     <td> <h1> <b> {{ hw_grades[hw][2] }} </b> </h1> </td>
