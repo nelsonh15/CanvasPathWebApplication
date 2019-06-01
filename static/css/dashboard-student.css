@@ -155,7 +155,7 @@ tr:hover {
     display: block;
     position: absolute;
     background-color: #FFF;
-    border: 1px solid #CCC;
+    border: 1px solid #cccccc;
     margin: 2px 10px;
     font-size: 12pt;
     border-radius: 5px;
@@ -196,6 +196,7 @@ tr:hover {
     padding: 0 18px;
     display: none;
     background-color: #f0f0f0;
+	overflow: hidden;
 }
 
 .grades_info {
@@ -242,7 +243,10 @@ tr:hover {
 
 .course_content1 {
     margin-left: 260px;
+
     display: none;
+    overflow: hidden;
+
 }
 
 
