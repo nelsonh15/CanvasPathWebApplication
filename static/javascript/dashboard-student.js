@@ -1,18 +1,13 @@
 var coll = document.getElementsByClassName("collapsible_personal_info");
 var i;
-var coll1 = document.getElementsByClassName("collapsible_grades_info");
-var j;
 var coll2 = document.getElementsByClassName("collapsible_courses");
 var k;
-var coll3 = document.getElementsByClassName("collapsible_professor_info");
-var l;
+
 var coll4 = document.getElementsByClassName("collapsible_professor");
 var m;
 
 collapsible(coll, i);
-collapsible(coll1, j);
 collapsible(coll2, k);
-collapsible(coll3, l);
 collapsible(coll4, m);
 
 function collapsible(coll, i) {

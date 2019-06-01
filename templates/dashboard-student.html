@@ -84,10 +84,7 @@
 
                 <section>
                     <div class="professor_information">
-
-                        <button class="collapsible_professor_info">
-                            <b> View Your Professor(s) Information </b>
-                        </button>
+                        <b style="font-size: 16pt;"> View Your Professor(s) Information </b>
 
                         <div class="course_content_professors">
 
@@ -108,7 +105,8 @@
 
                 <section>
                     <div class="grades_info">
-                        <button class="collapsible_grades_info"><b>View Your Grade(s)</b></button>
+                        <b style="font-size: 16pt;"> View Your Grade(s) </b>
+
                         <div class="course_content">
                             {% for course_name in range(courses | length) %}
                                 <button class="collapsible_courses"> <b>{{ courses[course_name][0] }}</b> </button>
