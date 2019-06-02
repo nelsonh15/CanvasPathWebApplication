@@ -74,26 +74,6 @@ def professor_dashboard():
 @login_required
 def student_dashboard():
     connection = sql.connect('database.db')
-    '''
-    variables = connection.execute('SELECT * FROM homework_grades_table')
-    variables1 = variables.fetchall()
-    print(variables1)
-    print(len(variables1))
-
-
-    for i in range(len(variables1)):
-
-        connection.execute('INSERT INTO Homework_grades1 (student_email, course_id, section_no, hw_no, grades) VALUES (?,?,?,?,?)',
-                           (variables1[i][0], variables1[i][1], variables1[i][2], variables1[i][3], variables1[i][4]))
-        connection.commit()
-        connection.execute('INSERT INTO Homework_grades1 (student_email, course_id, section_no, hw_no, grades) VALUES (?,?,?,?,?)',
-                           (variables1[i][0], variables1[i][5], variables1[i][6], variables1[i][7], variables1[i][8]))
-        connection.commit()
-
-        connection.execute('INSERT INTO Homework_grades1 (student_email, course_id, section_no, hw_no, grades) VALUES (?,?,?,?,?)',
-                           (variables1[i][0], variables1[i][9], variables1[i][10], variables1[i][11], variables1[i][12]))
-        connection.commit()
-    '''
 
     name = getName("for_students")[0][0]
     courses = CheckingInfo("courses") # courses = [('EE320', 1, 'Network Security and Cryptography'), ('EE212', 1, 'Introduction to Signal Conditioning'), ('CMPEN454', 2, 'Fundamentals of Computer Vision')]
