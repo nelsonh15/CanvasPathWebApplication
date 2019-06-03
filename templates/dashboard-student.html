@@ -111,6 +111,7 @@
                             {% for course_name in range(courses | length) %}
                                 <button class="collapsible_courses"> <b>{{ courses[course_name][0] }}</b> </button>
                                 <div class="course_content1">
+                                    <b> Exam(s) </b>
                                     <table>
                                             <tr>
                                                 <th>Exam Number</th>
@@ -127,6 +128,8 @@
                                         {% endfor %}
                                     </table>
 
+                                    <br>
+                                    <b> Homework(s)</b>
                                     <table>
                                             <tr>
                                                 <th> Homework Number </th>
