@@ -1,5 +1,6 @@
 body {
-	margin: 0px;
+	margin: 0;
+    padding: 0;
 }
 .left-navbar {
 	background-color: #222222;
@@ -104,6 +105,9 @@ body {
 
 table {
 	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    width: 100%;
+    height: 100%;
+
 }
 
 td {
@@ -242,10 +246,10 @@ tr:hover {
 }
 
 .course_content1 {
-    margin-left: 260px;
 
     display: none;
     overflow: hidden;
+    
 
 }
 
