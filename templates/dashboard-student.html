@@ -41,9 +41,9 @@
                     <div class="courses_message_div">
                         <table class="courses_table" style="width:100%">
                             <tr>
-                                <th>Course</th>
-                                <th>Section Number</th>
-                                <th> Course Name</th>
+                                <th class="course_th" onclick="w3.sortHTML('.courses_table', '.item', 'td:nth-child(1)')" style="cursor:pointer">Course</th>
+                                <th class="course_th" onclick="w3.sortHTML('.courses_table', '.item', 'td:nth-child(2)')" style="cursor:pointer">Section Number</th>
+                                <th class="course_th" onclick="w3.sortHTML('.courses_table', '.item', 'td:nth-child(3)')" style="cursor:pointer"> Course Name</th>
                             </tr>
 
                             {% for course in range(courses | length) %}
@@ -71,7 +71,7 @@
 
                                       </tr>
                                 {% else %}
-                                    <tr>
+                                    <tr class="item">
                                         <td> <h1> <b> {{ courses[course][0] }}</b> </h1> </td>
                                         <td> <h1> <b> {{ courses[course][1] }} </b> </h1> </td>
                                         <td> <h1> <b> {{ courses[course][2] }}</b> </h1> </td>
@@ -156,5 +156,6 @@
         </div>
 
     <script src="../static/javascript/dashboard-student.js"></script>
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
     </body>
 </html>

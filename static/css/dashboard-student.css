@@ -112,7 +112,7 @@ table {
 
 td {
     border-spacing: 1px;
-    border: 1px solid #dddddd;
+    border: 1px solid #828282;
 	text-align: center;
     font-size: 10pt;
 }
@@ -131,16 +131,25 @@ th:hover {
     background-color: #7ebae9;
 }
 
+.course_th:after {
+    content:"\2195";
+    color: #ffffff;
+    font-weight: bold;
+    float: right;
+    font-size: 16pt;
+}
+
 tr {
     color: #5ca8ff;
 }
 
-tr:nth-child(even) {
-    background-color: #d9d9d9;
-}
-
 tr:hover {
     background-color: gray;
+    color: white;
+}
+
+.capstone {
+    background-color: rgba(255, 6, 9, 0.51);
     color: white;
 }
 
