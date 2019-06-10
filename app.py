@@ -37,6 +37,7 @@ def admin_dashboard():
             return render_template('dashboard-admin.html', url=host, error=error, course_list=course_list)
         elif "DeleteCourse" in request.form:  # if user clicks on button with name="DeleteCourse"
             course_list = DeletingCourses(request.form['DeleteCourseID'])
+            #must also delete course's exams and hw
             return render_template('dashboard-admin.html', url=host, error=error, course_list=course_list)
         else:
             error = 'Invalid input name'
@@ -51,23 +52,10 @@ def professor_dashboard():
 
     name = getName("for_faculty_mem")[0][0]
     course_teaching = ProfessorTeaching()
-    print(course_teaching, file=sys.stderr)
-    hw_assignments = GenerateCourseAssignments(course_teaching[0][0])
-    print(hw_assignments, file=sys.stderr)
-    course_exams = GenerateCourseExams(course_teaching[0][0])
-    print(course_exams, file=sys.stderr)
+    prof_information = GetProfInfo()
 
-    error = None
-    if request.method == 'POST':
-        result = CreatingAssignments(request.form['FirstName'], request.form['LastName'])
-        if result:
-            return render_template('dashboard-professor.html', error=error, url=host, result=result, name=name,
-                                   hw_assignments=hw_assignments, course_exams=course_exams)
-        else:
-            error = 'Invalid input name'
-
-    return render_template('dashboard-professor.html', url=host, error=error, name=name, course_teaching=course_teaching,
-                           hw_assignments=hw_assignments, course_exams=course_exams)
+    return render_template('dashboard-professor.html', url=host, name=name, course_teaching=course_teaching,
+                           prof_information=prof_information)
 
 
 @app.route('/student/dashboard')
@@ -179,6 +167,12 @@ def CheckingInfo(item):
     elif item == "hw_grades":
         info = connection.execute('SELECT course_id, hw_no, grades FROM Homework_grades WHERE Email= ?', [session['email']])
 
+    return info.fetchall()
+
+def GetProfInfo():
+    connection = sql.connect('database.db')
+    info = connection.execute('SELECT Name, Age, Gender, Office_Address, Department, Title From Professors WHERE Email = ?',
+                              [session['email']])
     return info.fetchall()
 
 

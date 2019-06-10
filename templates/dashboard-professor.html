@@ -22,92 +22,30 @@
             </section>
 
             <section>
+                <div class="personal_info">
+                    <button class="collapsible_prof_info"><b>View Your Personal Information</b></button>
+                    <div class="content">
+                        <h1> Name: {{ prof_information[0][0] }}</h1>
+                        <h1> <b> Age: {{ prof_information[0][1] }} </b> </h1>
+                        <h1> <b> Gender: {{ prof_information[0][2] }} </b> </h1>
+                        <h1> <b> Office Address: {{ prof_information[0][3] }} </b> </h1>
+                        <h1> <b> Department: {{ prof_information[0][4] }} </b> </h1>
+                        <h1> <b> Title: {{ prof_information[0][5] }} </b></h1>
+                        <img src="../static/img/profile-default.png" class="profile_pic">
+                    </div>
+                </div>
+            </section>
+
+            <section>
                 <h1> You are teaching: </h1>
                 {% for courses in range(course_teaching | length) %}
                     <li> {{ course_teaching[courses][0] }} </li>
                 {% endfor %}
             </section>
 
-            <section>
-
-	            <div class="table">
-
-                {% for courses in range(course_teaching | length) %}
-                    <table>
-                        <thead>
-                            <tr>
-                                <h1> Homework and Exams for Students in: {{ course_teaching[courses][0] }} </h1>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr>
-                                <th> Student No. </th>
-                                <th> Student's Email </th>
-                                <th> Student's Name </th>
-
-                                {% for hws in range(hw_assignments | length) %}
-                                    <th> HW No. {{ hw_assignments[hws][0] }} </th>
-                                    <th> HW No. {{ hw_assignments[hws][0] }} Grades</th>
-                                {% endfor %}
-
-                                {% for exams in range(course_exams  | length) %}
-                                    <th> Exam No. {{ course_exams[exams][0] }} </th>
-                                    <th> Exam No. {{ course_exams[exams][0] }} Grades</th>
-                                {% endfor %}
-                            </tr>
-
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Bob@gmail.com</td>
-                                <td>Bob</td>
-                                <td>1</td>
-                                <td>92%</td>
-                                <td>1</td>
-                                <td>94%</td>
-
-                            </tr>
-
-                        </tbody>
-                    </table>
-                {% endfor %}
-
-                </div>
-            </section>
-
-            <section>
-                <h2>Print Name</h2>
-                    <form action="{{url_for('professor_dashboard')}}" method="POST">
-                    <label for="FirstName">First Name</label>
-                        <input type="text" name="FirstName" required>
-
-                    <label for="LastName">Last Name</label>
-                    <input type="text" name="LastName" required>
-
-                      <button type="submit">Insert</button>
-                    </form>
-
-                    <h2>History</h2>
-                    <table border = 1>
-                      <tr>
-                         <td> First Name </td>
-                         <th> Last Name </th>
-                      </tr>
-                         {% for first_name, last_name in result %}
-                            <tr>
-                               <td> {{ first_name }} </td>
-                               <th> {{ last_name }} </th>
-                            </tr>
-                         {% endfor %}
-                      </table>
-
-
-            </section>
-
-
         </div>
-
     </div>
 
+    <script src="../static/javascript/dashboard-professor.js"></script>
     </body>
 </html>
