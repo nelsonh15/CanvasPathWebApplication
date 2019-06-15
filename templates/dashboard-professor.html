@@ -40,6 +40,24 @@
                 <h1> You are teaching: </h1>
                 {% for courses in range(course_teaching | length) %}
                     <li> {{ course_teaching[courses][0] }} </li>
+
+                        <table class="student_table" style="width:100%">
+                            <tr>
+                                <th class="student_th" onclick="w3.sortHTML('.student_table', '.students', 'td:nth-child(1)')" style="cursor:pointer">Name</th>
+                                <th class="student_th" onclick="w3.sortHTML('.student_table', '.students', 'td:nth-child(2)')" style="cursor:pointer">Email</th>
+                                <th class="student_th" onclick="w3.sortHTML('.student_table', '.students', 'td:nth-child(3)')" style="cursor:pointer">Major</th>
+                                <th class="student_th" onclick="w3.sortHTML('.student_table', '.students', 'td:nth-child(4)')" style="cursor:pointer">Section</th>
+                            </tr>
+
+                            {% for student in range(student_list | length) %}
+                                <tr class="students">
+                                    <td> <h1> <b> {{ student_list[student][0] }} </b> </h1> </td>
+                                    <td> <h1> <b> {{ student_list[student][1] }} </b> </h1> </td>
+                                    <td> <h1> <b> {{ student_list[student][2] }} </b> </h1> </td>
+                                    <td> <h1> <b> {{ student_list[student][3] }} </b> </h1> </td>
+                                </tr>
+                            {% endfor %}
+                        </table>
                 {% endfor %}
             </section>
 
@@ -47,5 +65,6 @@
     </div>
 
     <script src="../static/javascript/dashboard-professor.js"></script>
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
     </body>
 </html>

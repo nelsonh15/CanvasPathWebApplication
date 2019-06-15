@@ -50,12 +50,18 @@ def admin_dashboard():
 def professor_dashboard():
     connection = sql.connect('database.db')
 
-    name = getName("for_faculty_mem")[0][0]
-    course_teaching = ProfessorTeaching()
-    prof_information = GetProfInfo()
+    name = getName("for_faculty_mem")[0][0] #name = "Dr Nann Wood"
+    print(name, file=sys.stderr)
+    course_teaching = ProfessorTeaching() #course_teaching = [('CSE583')]
+    print(course_teaching, file=sys.stderr)
+    prof_information = GetProfInfo() #prof_information = [('Dr Nann Wood', 56, 'M', '256, Building 18', 'CSE', 'Head')]
+    print(prof_information, file=sys.stderr)
+
+    student_list = ProfessorStudents(course_teaching)
+    print(student_list, file=sys.stderr)
 
     return render_template('dashboard-professor.html', url=host, name=name, course_teaching=course_teaching,
-                           prof_information=prof_information)
+                           prof_information=prof_information, student_list=student_list)
 
 
 @app.route('/student/dashboard')
@@ -169,6 +175,7 @@ def CheckingInfo(item):
 
     return info.fetchall()
 
+
 def GetProfInfo():
     connection = sql.connect('database.db')
     info = connection.execute('SELECT Name, Age, Gender, Office_Address, Department, Title From Professors WHERE Email = ?',
@@ -180,6 +187,15 @@ def ProfessorTeaching():
     connection = sql.connect('database.db')
     course_teaching = connection.execute('SELECT Teaching FROM Professors_teaches WHERE Email= ?', [session['email']])
     return course_teaching.fetchall()
+
+
+def ProfessorStudents(courses):
+    connection = sql.connect('database.db')
+    for course in courses:
+        students = connection.execute('SELECT Students.Name, Students.Email, Students.Major, Enrolls.Section_no'
+                                      ' FROM Students, Enrolls WHERE Enrolls.Email = Students.Email and Course_id = ?',
+                                      [course[0]])
+    return students.fetchall()
 
 
 def CreatingAssignments(first_name, last_name):
