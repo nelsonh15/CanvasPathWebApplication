@@ -1,7 +1,10 @@
 var coll = document.getElementsByClassName("collapsible_prof_info");
 var i
+var col2 = document.getElementsByClassName("collapsible_students_list");
+var j
 
 collapsible(coll, i);
+collapsible(col2, j);
 
 function collapsible(coll, i) {
   for (i = 0; i < coll.length; i++) {

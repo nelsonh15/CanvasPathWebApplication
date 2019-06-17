@@ -37,10 +37,11 @@
             </section>
 
             <section>
+                <div class="students_list_info"></div>
                 <h1> You are teaching: </h1>
                 {% for courses in range(course_teaching | length) %}
-                    <li> {{ course_teaching[courses][0] }} </li>
-
+                    <button class="collapsible_students_list"> <b> {{ course_teaching[courses][0] }} </b> </button>
+                    <div class="course_content1">
                         <table class="student_table" style="width:100%">
                             <tr>
                                 <th class="student_th" onclick="w3.sortHTML('.student_table', '.students', 'td:nth-child(1)')" style="cursor:pointer">Name</th>
@@ -58,6 +59,7 @@
                                 </tr>
                             {% endfor %}
                         </table>
+                    </div>
                 {% endfor %}
             </section>
 

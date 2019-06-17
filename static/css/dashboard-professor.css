@@ -1,3 +1,7 @@
+html {
+  overflow-y: scroll;
+}
+
 body {
 	margin: 0px;
 }
@@ -95,6 +99,38 @@ body {
     position: absolute;
     top:40px;
     left:0;
+}
+
+.course_content1 {
+    display: none;
+    overflow: hidden;
+}
+
+.collapsible_students_list {
+    background-color: #9fb4ff;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border-style: solid;
+    border-width: 1px;
+    text-align: left;
+    outline: none;
+    font-size: 13px;
+}
+
+.collapsible_students_list:hover {
+    background-color: #ccc;
+    opacity: 40%;
+    transition: 0.5s;
+}
+
+.collapsible_students_list:after {
+  content: '\002B';
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
 }
 
 table {
